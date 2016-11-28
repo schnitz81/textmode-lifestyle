@@ -8,9 +8,9 @@
 
 void dotbar(const int *maxx, const int *maxy, dot *dots)
 {
-    static int state = 0;
-    static int counter,bcounter;
-    int i;
+	static int state = 0;
+	static int counter,bcounter;
+	int i;
 
 	// Erase last turn dots
 	if(state>1){
@@ -21,9 +21,10 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 	
     switch(state){
 		
- 	case 0:
+	case 0:
 		counter = 0;
 		bcounter = 0;
+
 		// Initialize all dots.
 		for(i=0;i<*maxx;i++){
 			dots[i].x = i;
@@ -46,8 +47,8 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		dots[counter].visible = TRUE;
 		counter++;
 		if(counter>=*maxx){
-		    counter = 0;
-		    state = 3;
+			counter = 0;
+			state = 3;
 		}	
 	break;
 	
@@ -69,7 +70,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 	case 5:
 		counter++;
 		bcounter++;
-	    if(bcounter==10){		
+		if(bcounter==10){		
 			// Interwall light half of the dots.
 			for(i=0;i<*maxx;i++)
 				dots[i].visible = !dots[i].visible;
@@ -218,5 +219,4 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 				mvprintw(dots[i].y,dots[i].x,".");				
 		}
 	}
-	
 }
