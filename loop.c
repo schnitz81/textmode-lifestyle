@@ -2,9 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
 #include "banner.h"
 #include "bouncer.h"
 #include "loop.h"
