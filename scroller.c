@@ -1,10 +1,6 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
 #include "scroller.h"
 #include "loop.h"
 #include "dotbar.h"
