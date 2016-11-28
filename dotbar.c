@@ -1,9 +1,6 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include <unistd.h>
 #include "dotbar.h"
 
 void dotbar(const int *maxx, const int *maxy, dot *dots)
@@ -16,8 +13,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 	if(state>1){
 		for(i=0;i<*maxx;i++)
 			mvprintw(dots[i].y,dots[i].x," ");
-	}
-		
+	}	
 	
     switch(state){
 		
@@ -35,7 +31,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		state = 1;
 	break;
 	
-	case 1:		// Initial pause before first print.
+	case 1:  // Initial pause before first print.
 		counter++;
 		if(counter==10){   // make longer
 			counter = 0;
@@ -43,7 +39,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		}
 	break;
 	
-	case 2:		// Light all dots from left to right.
+	case 2:  // Light all dots from left to right.
 		dots[counter].visible = TRUE;
 		counter++;
 		if(counter>=*maxx){
@@ -60,8 +56,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		}	
 	break;
 	
-	case 4:
-		// Put out every other dot.
+	case 4:  // Put out every other dot.
 		for(i=0;i<*maxx;i=i+2)
 			dots[i].visible=FALSE;
 		state = 5;
@@ -83,13 +78,13 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		}
 	break;
 	
-	case 6:		// Light all dots.
+	case 6:  // Light all dots.
 		for(i=0;i<*maxx;i++)
 			dots[i].visible=TRUE;
 		state = 7;
 	break;
 		
-	case 7:		// Pause.
+	case 7:  // Pause.
 		counter++;
 		if(counter==50){
 			counter = 0;
@@ -97,7 +92,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		}	
 	break;
 	
-	case 8:		// Straight line motion.
+	case 8:  // Straight line motion.
 		counter++;
 		
 		// Update new coordinates.
@@ -136,7 +131,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		}
 	break;
 	
-	case 9:		// Pause.
+	case 9:  // Pause.
 		counter++;
 		if(counter==50){
 			counter = 0;
