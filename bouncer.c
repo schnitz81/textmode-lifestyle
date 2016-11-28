@@ -4,13 +4,13 @@
 #include <time.h>
 #include <string.h>
 #include <unistd.h>
-#include <assert.h>
 #include "bouncer.h"
 
 Bouncer *create_bouncer(const int x, const int y)
 {
-	Bouncer *unit= malloc(sizeof(Bouncer));
-	assert(unit != NULL);
+	Bouncer *unit = malloc(sizeof(Bouncer));
+	
+	// Store start position for all bouncer pixels.
 	
 	unit->x = x;
 	unit->y = y;
@@ -105,19 +105,18 @@ Bouncer *create_bouncer(const int x, const int y)
 	unit->ydirection = DOWN;
 	unit->xdirection = RIGHT;
 		
-	return unit;
-	
+	return unit;	
 }
 
 void destroy_bouncer(Bouncer *unit)
 {
-	assert(unit != NULL);
 	free(unit);
 } 
 
 void update_bouncer(Bouncer *unit)
 {
-
+	// Update all pixels from moved position.
+	
 	unit->pixels[0].x = unit->x-1;
 	unit->pixels[0].y = unit->y-2;
 	
@@ -210,8 +209,7 @@ void erase_old_bouncer(Bouncer *unit)
 {
 	int i;
 	chtype tmppixel;
-	for(i=0;i<=28;i++)
-	{
+	for(i=0;i<=28;i++){
 		tmppixel = mvinch(unit->pixels[i].y,unit->pixels[i].x);
 		tmppixel -= (tmppixel & A_STANDOUT);
 		mvaddch(unit->pixels[i].y,unit->pixels[i].x,tmppixel);
@@ -223,7 +221,7 @@ void print_bouncer(Bouncer *unit)
 	int i;
 	chtype tmppixel;
 	attron(A_STANDOUT); 
-	for(i=0;i<=28;i++){
+	for(i=0;i<=28;i++){  // Draw bouncer by inverting.
 		tmppixel = mvinch(unit->pixels[i].y,unit->pixels[i].x);
 		mvaddch(unit->pixels[i].y,unit->pixels[i].x,tmppixel);
 	}
@@ -233,6 +231,8 @@ void print_bouncer(Bouncer *unit)
 void move_bouncer(const int *maxx, const int *maxy, Bouncer *unit)
 {
 	erase_old_bouncer(unit);
+	
+	// *** Bouncer movement logic ***
 	
 	// Y-wise movement.
 	if(unit->ydirection == DOWN ){
