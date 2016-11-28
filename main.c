@@ -14,7 +14,7 @@
 pthread_t startMultiThread()
 {
 	int threadRtrn;
-    pthread_t  tId;     	
+	pthread_t  tId;     	
     
 	threadRtrn = pthread_create(&tId, NULL, play_music, NULL);
 	if(threadRtrn){
@@ -49,7 +49,8 @@ int main()
 
 	// Execute loop
 	loop( &maxx, &maxy);
-
+	
+	// Main loop exited. End screen.
 	endwin();
 	
 	// Shut down music thread and return .
