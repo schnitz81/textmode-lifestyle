@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
-#include <unistd.h>
 #include "bouncer.h"
 
 Bouncer *create_bouncer(const int x, const int y)
