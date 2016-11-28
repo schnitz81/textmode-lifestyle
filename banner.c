@@ -1,10 +1,7 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
+
 
 void drawMiddleLine( const int *maxx, const int *maxy)
 {
@@ -43,6 +40,7 @@ void banner(const int *maxx, const int *maxy)
 
 	int bannerchoice,posx,posy;
 
+	// Choose banner by terminal size.
 	if(*maxx<56 || *maxy<23)
 		bannerchoice = 0;
 	else if(*maxy<=33){
@@ -167,7 +165,7 @@ void banner(const int *maxx, const int *maxy)
 	printw("     \\__\\/                         \\__\\/        \\__\\/                           \\__\\/ \\__\\/                   ");
 
 		break;
-	default:
+	default:  // Terminal is too small - exit.
 		endwin();
 		printf("\n\n\n\nError: Terminal window must be at least 56 chars wide and 23 chars high.\n");
 		exit(1);
