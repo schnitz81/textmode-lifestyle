@@ -1,10 +1,6 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
 #include <pthread.h>
 #include <signal.h>
 #include "loop.h"
@@ -16,8 +12,8 @@ pthread_t startMultiThread()
 	int threadRtrn;
 	pthread_t  tId;     	
     
-	threadRtrn = pthread_create(&tId, NULL, play_music, NULL);
-	if(threadRtrn){
+	threadRtrn = pthread_create(&tId, NULL, play_music, NULL);  // Second thread call.
+	if(threadRtrn){  // If second thread fails - exit.
 		endwin();
 		printf("\n ERROR: return code from music routine thread is %d \n", threadRtrn);
 		exit(1);
