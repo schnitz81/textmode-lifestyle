@@ -235,12 +235,10 @@ void move_bouncer(const int *maxx, const int *maxy, Bouncer *unit)
 	// *** Bouncer movement logic ***
 	
 	// Y-wise movement.
-	if(unit->ydirection == DOWN ){
+	if(unit->ydirection == DOWN )
 		unit->y++;
-	}
-	else if(unit->ydirection == UP ){
+	else if(unit->ydirection == UP )
 		unit->y--;
-	}
 
 	// X-wise movement
 	if(unit->xdirection == RIGHT && unit->y == *maxy/4)
@@ -251,19 +249,15 @@ void move_bouncer(const int *maxx, const int *maxy, Bouncer *unit)
 	// Floor is hit.
 	if(unit->y+2 >= (*maxy/2)-1)
 		unit->ydirection = UP;
-		
 	// Top is reached.
-	else if(unit->y-2 <= 1){
+	else if(unit->y-2 <= 1)
 		unit->ydirection = DOWN;
-	}
 	
 	// Wall is hit
-	if(unit->x + 5 >= *maxx-1){
+	if(unit->x + 5 >= *maxx-1)
 		unit->xdirection = LEFT;
-	}
-	else if(unit->x - 4 <= 1){
+	else if(unit->x - 4 <= 1)
 		unit->xdirection = RIGHT;
-	}
 	
 	update_bouncer(unit);
 	print_bouncer(unit);
