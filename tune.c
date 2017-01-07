@@ -1,5 +1,7 @@
 #include <unistd.h>
 #include <mikmod.h>
+#include <curses.h>
+#include "tune.h"
 
 void *play_music()
 {
@@ -20,7 +22,7 @@ if (MikMod_Init("")) {
 }
 
 /* load module */
-module = Player_Load("tune.dat", 64, 0);
+module = Player_Load(TUNEFILE, 64, 0);
 if (module) {
 	/* start module */
 	Player_Start(module);
@@ -31,10 +33,13 @@ if (module) {
 	}
 	Player_Stop();
 	Player_Free(module);
-} else
+} 
+/* give up */
+else{
+	endwin();
 	fprintf(stderr, "Could not load module, reason: %s\n",
 	MikMod_strerror(MikMod_errno));
-exit(1);
-/* give up */
+}
 MikMod_Exit();
+exit(1);
 }
