@@ -12,7 +12,7 @@ typedef struct {
 
 /* Function prototypes */
 void dotbar(const int *maxx, const int *maxy, dot *dots);
-
+void restart_dotbar();
 
 #endif
 

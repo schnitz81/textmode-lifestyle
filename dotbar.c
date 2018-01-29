@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dotbar.h"
+	
+	
+static int state = 0;
 
 void dotbar(const int *maxx, const int *maxy, dot *dots)
 {
-	static int state = 0;
 	static int counter,bcounter;
 	int i;
 
@@ -214,4 +216,9 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 				mvprintw(dots[i].y,dots[i].x,".");				
 		}
 	}
+}
+
+void restart_dotbar()
+{
+	state = 0;
 }
