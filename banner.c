@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
 
-void drawMiddleLine( const int *maxx, const int *maxy)
+void drawMiddleLine(const int *maxx, const int *maxy)
 {
-	int	i;
+	int i;
 	for(i=0;i<*maxx;i++){
 		move(*maxy/2,i);
 		printw("%c",35);
@@ -41,9 +41,7 @@ void banner(const int *maxx, const int *maxy)
 	int bannerchoice,posx,posy;
 
 	// Choose banner by terminal size.
-	if(*maxx<56 || *maxy<23)
-		bannerchoice = 0;
-	else if(*maxy<=33){
+	if(*maxy<=33){
 		bannerchoice = 1;
 		posx = *maxx/2 - 27;
 		posy = *maxy/4 - 3;
@@ -165,10 +163,13 @@ void banner(const int *maxx, const int *maxy)
 	printw("     \\__\\/                         \\__\\/        \\__\\/                           \\__\\/ \\__\\/                   ");
 
 		break;
-	default:  // Terminal is too small - exit.
-		endwin();
-		printf("\n\n\n\nError: Terminal window must be at least 56 chars wide and 23 chars high.\n");
-		exit(1);
+	default:  // Should never happen.
+		break;
+		
+//		endwin();
+//		printf("\n\n\n\nError: Terminal window must be at least 56 chars wide and 23 chars high.\n");
+//		exit(1);
+//
 	}
 	mvprintw(1,*maxx-12,"by schnitz");
 }

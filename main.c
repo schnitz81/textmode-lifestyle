@@ -23,31 +23,14 @@ pthread_t startMultiThread()
 
 int main()
 {
-	int maxx,maxy;	
-
 	// Disable output buffer.
 	setvbuf(stdout, NULL, _IONBF, 0);
 			
 	// Start second thread.
 	pthread_t threadId = startMultiThread();
 
-	// Set screen mode.
-	initscr(); 
-	
-	// Don't stop by getch().
-	nodelay(stdscr, TRUE);  
-
-	// Disable cursor.	
-	curs_set(0);  
-
-	// Get terminal size and set maximum coordinates.
-	getmaxyx(stdscr,maxy,maxx);  
-
 	// Execute loop
-	loop( &maxx, &maxy);
-	
-	// Main loop exited. End screen.
-	endwin();
+	loop();
 	
 	// Shut down music thread and return .
 	pthread_cancel(threadId);	

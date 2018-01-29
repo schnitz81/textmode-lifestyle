@@ -7,7 +7,7 @@ struct timespec delay;  // Data type for pause timer.
 
 
 /* Function prototypes */
-void loop(const int *maxx, const int *maxy);
+void loop();
 
 
 #endif
