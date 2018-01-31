@@ -111,7 +111,7 @@ void destroy_bouncer(Bouncer *unit)
 	free(unit);
 } 
 
-void update_bouncer(Bouncer *unit)
+void update_bouncer_pixels(Bouncer *unit)
 {
 	// Update all pixels from moved position.
 	
@@ -226,8 +226,12 @@ void print_bouncer(Bouncer *unit)
 	attroff(A_STANDOUT);
 }
 
-void move_bouncer(const int *maxx, const int *maxy, Bouncer *unit)
+void update_bouncer(const int *maxx, const int *maxy, Bouncer *unit, const int *i)
 {
+	// Determine if bouncer will move the cycle.
+	if(!(evaluate_bouncer_movement_round(maxy, unit, i)))
+		return;
+	
 	erase_old_bouncer(unit);
 	
 	// *** Bouncer movement logic ***
@@ -257,6 +261,48 @@ void move_bouncer(const int *maxx, const int *maxy, Bouncer *unit)
 	else if(unit->x - 4 <= 1)
 		unit->xdirection = RIGHT;
 	
-	update_bouncer(unit);
+	update_bouncer_pixels(unit);
 	print_bouncer(unit);
+}
+
+int evaluate_bouncer_movement_round(const int *maxy, Bouncer *unit, const int *i)
+{
+	// Gravitational bounce movement.
+	if(*maxy > 40){  // Large terminal window.
+		if((unit->y) > ((*maxy/2)/10)*9)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*8 && *i<9)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*7 && *i<8)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*6 && *i<7)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*5 && *i<6)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*4 && *i<5)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*3 && *i<4)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*2 && *i<3)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/10)*1 && *i<2)
+			return 1;
+		else if((unit->y) <= ((*maxy/2)/10)*1 && *i<2)
+			return 1;
+	}
+	else{  // Minimal terminal window.
+		if((unit->y) > ((*maxy/2)/5)*5 && *i<5)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/5)*4 && *i<5)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/5)*3 && *i<4)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/5)*2 && *i<3)
+			return 1;
+		else if((unit->y) > ((*maxy/2)/5)*1 && *i<2)
+			return 1;
+		else if((unit->y) <= ((*maxy/2)/5)*1 && *i<2)
+			return 1;
+	}
+	return 0;
 }
