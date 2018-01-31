@@ -31,7 +31,7 @@ void loop()
 	while(ch != 27){
 	        
 		// Set screen mode.
-       	initscr();
+		initscr();
 
 		// Don't stop by getch().
 		nodelay(stdscr, TRUE);
@@ -39,7 +39,6 @@ void loop()
 		// Disable cursor.
 		curs_set(0);
 
-	
 		// Get terminal size and set window size.
 		getmaxyx(stdscr,maxy,maxx);
 		if (maxx < 56)  // Set minimal allowed window size.
@@ -61,7 +60,6 @@ void loop()
 		// Set starting values to all letter coordinates.
 		initialize( &maxx, &maxy, &txtLength, coordinates );
 
-
 		// Character update loop.
 		while(currentmaxy == maxy && currentmaxx == maxx && ch != 27){ 
 			ch = getch(); // Detect escape button.
@@ -69,7 +67,7 @@ void loop()
 			for(i=1;i<=9;i++){
 				nanosleep(&delay,NULL);  // Cycle time delay.
 				
-				// 
+				// Scroller update.
 				if(i==1){
 					dotbar(&maxx, &maxy, dots);
 					scroller(&maxx, &maxy, &txtLength, coordinates);
