@@ -98,20 +98,14 @@ void scroller(const int *maxx, const int *maxy, const int *txtLength, Position *
 		initialize( &*maxx, &*maxy, &*txtLength, coordinates );
 	}
 
-	// Draw text.
-	for(i=0;i<=*txtLength;i++){
-		if( coordinates[i].x >= 0 && coordinates[i].x < *maxx ){  // Only if position is "inscreen".
-			move( coordinates[i].y,coordinates[i].x );  // y-koordinat, x-koordinat
-			printw("%c",txt[i]); 
-		}
-	}
-
+	print_text(maxx, txtLength, coordinates);
 }
 
 void print_text(const int *maxx, const int *txtLength, Position *coordinates)
 {
 	int i;
-	// Draw text.
+	
+	// Print out text.
 	for(i=0;i<=*txtLength;i++){
 		if( coordinates[i].x >= 0 && coordinates[i].x < *maxx ){  // Only if position is "inscreen".
 			move( coordinates[i].y,coordinates[i].x );  // y-koordinat, x-koordinat
