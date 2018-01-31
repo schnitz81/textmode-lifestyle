@@ -3,7 +3,7 @@
 
 extern const char txt[];
 
-#define CYCLETIME 10500000  // Cycletime.
+#define CYCLETIME 10800000  // Cycletime.
 struct timespec delay; // Data type for pause timer.
 
 /* Function prototypes */
