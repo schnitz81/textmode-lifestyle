@@ -44,7 +44,7 @@ if ! [ -e textmode-lifestyle.x64 ]; then
 		echo "Build successful. Starting executable..."; sleep 5
 		./textmode-lifestyle.x64
 	else
-		echo FAIL
+		echo "Build failed. Unable to start."
 	fi
 	
 else
