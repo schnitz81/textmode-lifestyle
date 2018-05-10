@@ -41,14 +41,14 @@ if ! [ -e textmode-lifestyle.x64 ]; then
 	gcc -o textmode-lifestyle.x64 main.o loop.o bouncer.o scroller.o dotbar.o banner.o tune.o -lcurses -lmikmod -lpthread
 
 	if [ $? -eq 0 ]; then
-		echo "Build successful. Starting executable..."; sleep 5
+		echo "Build successful. Starting executable..."; sleep 1
 		./textmode-lifestyle.x64
 	else
 		echo "Build failed. Unable to start."
 	fi
 	
 else
-	echo -e "\nExecutable found. Starting..."; sleep .5
+	echo -e "\nExecutable found. Starting..."; sleep 1
 	./textmode-lifestyle.x64
 fi
 
