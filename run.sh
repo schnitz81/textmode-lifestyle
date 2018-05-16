@@ -1,4 +1,4 @@
-if ! [ -e textmode-lifestyle.x64 ]; then
+if ! [ -e textmode-lifestyle ]; then
 	echo "No executable found. Preparing to build..."; sleep .6
 	echo -n "Checking gcc..."; sleep .4
 	if ! [ -e /usr/bin/gcc ]; then
@@ -38,18 +38,18 @@ if ! [ -e textmode-lifestyle.x64 ]; then
 	gcc -Wall -c dotbar.c
 	gcc -Wall -c banner.c
 	gcc -Wall -c tune.c
-	gcc -o textmode-lifestyle.x64 main.o loop.o bouncer.o scroller.o dotbar.o banner.o tune.o -lcurses -lmikmod -lpthread
+	gcc -o textmode-lifestyle main.o loop.o bouncer.o scroller.o dotbar.o banner.o tune.o -lcurses -lmikmod -lpthread
 
 	if [ $? -eq 0 ]; then
 		echo "Build successful. Starting executable..."; sleep 1
-		./textmode-lifestyle.x64
+		./textmode-lifestyle
 	else
 		echo "Build failed. Unable to start."
 	fi
 	
 else
 	echo -e "\nExecutable found. Starting..."; sleep 1
-	./textmode-lifestyle.x64
+	./textmode-lifestyle
 fi
 
 
