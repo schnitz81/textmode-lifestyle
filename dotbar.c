@@ -147,11 +147,11 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		case 10:
 			switch(cycleskip){
 				case TRUE:
-					cycleskip=1;
+					cycleskip=FALSE;
 					break;
 				case FALSE:
 					counter++;
-					cycleskip = FALSE;
+					cycleskip = TRUE;
 					// 5-dot width waves
 					if(bcounter < *maxx && counter < 200)
 						bcounter += 2;
