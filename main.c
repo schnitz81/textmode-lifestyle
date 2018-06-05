@@ -34,7 +34,7 @@ int main()
 	
 	// Shut down music thread and return.
 	pthread_cancel(threadId);	
-	
+
 	printf("\n\n\n\n\n Text mode lifestyle.\n\n\n\n\n");
 	return 0;
 }
