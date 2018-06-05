@@ -10,6 +10,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 {
 	static int counter,bcounter;
 	int i;
+	static bool cycleskip;
 
 	// Erase last turn dots
 	if(state>1){
@@ -23,6 +24,7 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 		case 0:
 			counter = 0;
 			bcounter = 0;
+			cycleskip = FALSE;
 
 			// Initialize all dots.
 			for(i=0;i<*maxx;i++){
@@ -143,71 +145,78 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 			break;
 			
 		case 10:
-			counter++;
+			switch(cycleskip){
+				case TRUE:
+					cycleskip=1;
+					break;
+				case FALSE:
+					counter++;
+					cycleskip = FALSE;
+					// 5-dot width waves
+					if(bcounter < *maxx && counter < 200)
+						bcounter += 2;
+					if(bcounter >=*maxx && counter < 200)
+						bcounter = *maxx-1;
 	
-			// 5-dot width waves
-			if(bcounter < *maxx && counter < 300)
-				bcounter += 2;
-			if(bcounter >=*maxx && counter < 300)
-				bcounter = *maxx-1;
+					// 4-dot width waves
+					if(counter == 200)
+						bcounter = 0;
+				
+					if(bcounter < *maxx && counter >= 200 && counter < 400)
+						bcounter += 4;
+					if(bcounter >=*maxx && counter > 200 && counter < 400)
+						bcounter = *maxx-1;
+				
+					// 3-dot width waves
+					if(counter == 400)
+						bcounter = 0;
+				
+					if(bcounter < *maxx && counter >= 400 && counter < 600)
+						bcounter += 6;
+					if(bcounter >=*maxx && counter > 600 && counter < 600)
+						bcounter = *maxx-1;
 	
-			// 4-dot width waves
-			if(counter == 300)
-				bcounter = 0;
+					// 2-dot width waves
+					if(counter == 600)
+						bcounter = 0;
 				
-			if(bcounter < *maxx && counter >= 300 && counter < 600)
-				bcounter += 4;
-			if(bcounter >=*maxx && counter > 300 && counter < 600)
-				bcounter = *maxx-1;
+					if(bcounter < *maxx && counter >= 600 && counter < 900)
+						bcounter += 8;
+					if(bcounter >=*maxx && counter > 600 && counter < 900)
+						bcounter = *maxx-1;
 				
-			// 3-dot width waves
-			if(counter == 600)
-				bcounter = 0;
+					// 1-dot width waves
+					if(counter == 900)
+						bcounter = 0;
 				
-			if(bcounter < *maxx && counter >= 600 && counter < 900)
-				bcounter += 6;
-			if(bcounter >=*maxx && counter > 600 && counter < 900)
-				bcounter = *maxx-1;
-	
-			// 2-dot width waves
-			if(counter == 900)
-				bcounter = 0;
-				
-			if(bcounter < *maxx && counter >= 900 && counter < 1200)
-				bcounter += 8;
-			if(bcounter >=*maxx && counter > 900 && counter < 1200)
-				bcounter = *maxx-1;
-				
-			// 1-dot width waves
-			if(counter == 1200)
-				bcounter = 0;
-				
-			if(bcounter < *maxx && counter >= 1200 && counter < 1500)
-				bcounter += 10;
-			if(bcounter >=*maxx && counter > 1200 && counter < 1500)
-				bcounter = *maxx-1;
+					if(bcounter < *maxx && counter >= 900 && counter < 1200)
+						bcounter += 10;
+					if(bcounter >=*maxx && counter > 900 && counter < 1200)
+						bcounter = *maxx-1;
 		
-			// Update new coordinates.
-			for(i=0;i<=bcounter;i++){
-				if(dots[i].direction==UP)
-					dots[i].y--;
-				else if(dots[i].direction==DOWN)
-					dots[i].y++;
-				if(dots[i].y==(*maxy/2)+1)
-					dots[i].direction=DOWN;
-				else if(dots[i].y==*maxy-1)
-					dots[i].direction=UP;
-			}	
+					// Update new coordinates.
+					for(i=0;i<=bcounter;i++){
+						if(dots[i].direction==UP)
+							dots[i].y--;
+						else if(dots[i].direction==DOWN)
+							dots[i].y++;
+						if(dots[i].y==(*maxy/2)+1)
+							dots[i].direction=DOWN;
+						else if(dots[i].y==*maxy-1)
+							dots[i].direction=UP;
+					}		
 					
-			// Make invisible from left to right when sequence is done.
-			if(counter >= 1500 && (counter-1500)<*maxx)
-				dots[counter-1500].visible = FALSE;
+					// Make invisible from left to right when sequence is done.
+					if(counter >= 1200 && (counter-1200)<*maxx)
+						dots[counter-1200].visible = FALSE;
 			
-			// Restart.	
-			if((counter - 1500) > *maxx)  // If all dots have left the screen.
-				state = 0;
+					// Restart.	
+					if((counter - 1200) > *maxx)  // If all dots have left the screen.
+						state = 0;
+
+					break;
+			}  // cycleskip state machine
 			break;
-		
 	}  // switch  
 		
 	// Print new dots.
