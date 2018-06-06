@@ -153,45 +153,45 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 					counter++;
 					cycleskip = TRUE;
 					// 5-dot width waves
-					if(bcounter < *maxx && counter < 200)
+					if(bcounter < *maxx && counter < 150)
 						bcounter += 2;
-					if(bcounter >=*maxx && counter < 200)
+					if(bcounter >=*maxx && counter < 150)
 						bcounter = *maxx-1;
 	
 					// 4-dot width waves
-					if(counter == 200)
+					if(counter == 150)
 						bcounter = 0;
 				
-					if(bcounter < *maxx && counter >= 200 && counter < 400)
+					if(bcounter < *maxx && counter >= 150 && counter < 300)
 						bcounter += 4;
-					if(bcounter >=*maxx && counter > 200 && counter < 400)
+					if(bcounter >=*maxx && counter > 150 && counter < 300)
 						bcounter = *maxx-1;
 				
 					// 3-dot width waves
-					if(counter == 400)
+					if(counter == 300)
 						bcounter = 0;
 				
-					if(bcounter < *maxx && counter >= 400 && counter < 600)
+					if(bcounter < *maxx && counter >= 300 && counter < 450)
 						bcounter += 6;
-					if(bcounter >=*maxx && counter > 600 && counter < 600)
+					if(bcounter >=*maxx && counter > 450 && counter < 450)
 						bcounter = *maxx-1;
 	
 					// 2-dot width waves
-					if(counter == 600)
+					if(counter == 450)
 						bcounter = 0;
 				
-					if(bcounter < *maxx && counter >= 600 && counter < 900)
+					if(bcounter < *maxx && counter >= 450 && counter < 600)
 						bcounter += 8;
-					if(bcounter >=*maxx && counter > 600 && counter < 900)
+					if(bcounter >=*maxx && counter > 450 && counter < 600)
 						bcounter = *maxx-1;
 				
 					// 1-dot width waves
-					if(counter == 900)
+					if(counter == 600)
 						bcounter = 0;
 				
-					if(bcounter < *maxx && counter >= 900 && counter < 1200)
+					if(bcounter < *maxx && counter >= 600 && counter < 750)
 						bcounter += 10;
-					if(bcounter >=*maxx && counter > 900 && counter < 1200)
+					if(bcounter >=*maxx && counter > 600 && counter < 750)
 						bcounter = *maxx-1;
 		
 					// Update new coordinates.
@@ -207,11 +207,11 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 					}		
 					
 					// Make invisible from left to right when sequence is done.
-					if(counter >= 1200 && (counter-1200)<*maxx)
-						dots[counter-1200].visible = FALSE;
+					if(counter >= 750 && (counter-750)<*maxx)
+						dots[counter-750].visible = FALSE;
 			
 					// Restart.	
-					if((counter - 1200) > *maxx)  // If all dots have left the screen.
+					if((counter - 750) > *maxx)  // If all dots have left the screen.
 						state = 0;
 
 					break;
