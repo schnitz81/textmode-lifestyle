@@ -97,11 +97,9 @@ void scroller(const int *maxx, const int *maxy, const int *txtLength, Position *
 	if(coordinates[*txtLength].x < 0){
 		initialize( &*maxx, &*maxy, &*txtLength, coordinates );
 	}
-
-	print_text(maxx, txtLength, coordinates);
 }
 
-void print_text(const int *maxx, const int *txtLength, Position *coordinates)
+void print_text(const int *maxx, const int *txtLength, const Position *coordinates)
 {
 	int i;
 	

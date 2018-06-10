@@ -9,7 +9,7 @@
 #include "dotbar.h"
 
 /* Scroll text */
-const char txt[] = "So here we are with a great new intro for the masses. Remember: Text mode is not an option, not just a graphics mode. It is a life style. And those of you who think graphical user interfaces are more efficient are stuck in the 90s. This intro uses multithreading and terminal size scalability, adapting banner and scroll text to the terminal size at launch. Greetings go to all those who love minimalistic computer environments! /Schnitz signing off...  \n";
+const char txt[] = "So here we are with a great new intro for the masses. Remember: Text mode is not an option, not just a graphics mode. It is a life style. And those of you who think graphical user interfaces are more efficient are stuck in the 90s. This intro uses multithreading and terminal size scalability, adapting banner and scroll text to the current terminal size. Greetings go to all those who love minimalistic computer environments! /Schnitz signing off...  \n";
 
 
 void loop()
@@ -67,11 +67,14 @@ void loop()
 			for(i=1;i<=9;i++){
 				nanosleep(&delay,NULL);  // Cycle time delay.
 				
-				// Scroller update.
+				// Dotbar and scroller update.
 				if(i==1){
 					dotbar(&maxx, &maxy, dots);
 					scroller(&maxx, &maxy, &txtLength, coordinates);
+					print_text(&maxx, &txtLength, coordinates);
 				}
+
+				// Only dotbar update.
 				else if(i==4||i==7){
 					dotbar(&maxx, &maxy, dots);
 					print_text(&maxx, &txtLength, coordinates);
