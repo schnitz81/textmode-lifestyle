@@ -145,77 +145,73 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 			break;
 			
 		case 10:
-			switch(cycleskip){
-				case TRUE:
-					cycleskip=FALSE;
-					break;
-				case FALSE:
-					counter++;
-					cycleskip = TRUE;
-					// 5-dot width waves
-					if(bcounter < *maxx && counter < 150)
-						bcounter += 2;
-					if(bcounter >=*maxx && counter < 150)
-						bcounter = *maxx-1;
-	
-					// 4-dot width waves
-					if(counter == 150)
-						bcounter = 0;
-				
-					if(bcounter < *maxx && counter >= 150 && counter < 300)
-						bcounter += 4;
-					if(bcounter >=*maxx && counter > 150 && counter < 300)
-						bcounter = *maxx-1;
-				
-					// 3-dot width waves
-					if(counter == 300)
-						bcounter = 0;
-				
-					if(bcounter < *maxx && counter >= 300 && counter < 450)
-						bcounter += 6;
-					if(bcounter >=*maxx && counter > 450 && counter < 450)
-						bcounter = *maxx-1;
-	
-					// 2-dot width waves
-					if(counter == 450)
-						bcounter = 0;
-				
-					if(bcounter < *maxx && counter >= 450 && counter < 600)
-						bcounter += 8;
-					if(bcounter >=*maxx && counter > 450 && counter < 600)
-						bcounter = *maxx-1;
-				
-					// 1-dot width waves
-					if(counter == 600)
-						bcounter = 0;
-				
-					if(bcounter < *maxx && counter >= 600 && counter < 750)
-						bcounter += 10;
-					if(bcounter >=*maxx && counter > 600 && counter < 750)
-						bcounter = *maxx-1;
-		
-					// Update new coordinates.
-					for(i=0;i<=bcounter;i++){
-						if(dots[i].direction==UP)
-							dots[i].y--;
-						else if(dots[i].direction==DOWN)
-							dots[i].y++;
-						if(dots[i].y==(*maxy/2)+1)
-							dots[i].direction=DOWN;
-						else if(dots[i].y==*maxy-1)
-							dots[i].direction=UP;
-					}		
-					
-					// Make invisible from left to right when sequence is done.
-					if(counter >= 750 && (counter-750)<*maxx)
-						dots[counter-750].visible = FALSE;
-			
-					// Restart.	
-					if((counter - 750) > *maxx)  // If all dots have left the screen.
-						state = 0;
+			if(cycleskip)
+				cycleskip=FALSE;
+			else{
+				counter++;
+				cycleskip = TRUE;
+				// 5-dot width waves
+				if(bcounter < *maxx && counter < 150)
+					bcounter += 2;
+				if(bcounter >=*maxx && counter < 150)
+					bcounter = *maxx-1;
 
-					break;
-			}  // cycleskip state machine
+				// 4-dot width waves
+				if(counter == 150)
+					bcounter = 0;
+			
+				if(bcounter < *maxx && counter >= 150 && counter < 300)
+					bcounter += 4;
+				if(bcounter >=*maxx && counter > 150 && counter < 300)
+					bcounter = *maxx-1;
+			
+				// 3-dot width waves
+				if(counter == 300)
+					bcounter = 0;
+			
+				if(bcounter < *maxx && counter >= 300 && counter < 450)
+					bcounter += 6;
+				if(bcounter >=*maxx && counter > 450 && counter < 450)
+					bcounter = *maxx-1;
+
+				// 2-dot width waves
+				if(counter == 450)
+					bcounter = 0;
+			
+				if(bcounter < *maxx && counter >= 450 && counter < 600)
+					bcounter += 8;
+				if(bcounter >=*maxx && counter > 450 && counter < 600)
+					bcounter = *maxx-1;
+			
+				// 1-dot width waves
+				if(counter == 600)
+					bcounter = 0;
+			
+				if(bcounter < *maxx && counter >= 600 && counter < 750)
+					bcounter += 10;
+				if(bcounter >=*maxx && counter > 600 && counter < 750)
+					bcounter = *maxx-1;
+	
+				// Update new coordinates.
+				for(i=0;i<=bcounter;i++){
+					if(dots[i].direction==UP)
+						dots[i].y--;
+					else if(dots[i].direction==DOWN)
+						dots[i].y++;
+					if(dots[i].y==(*maxy/2)+1)
+						dots[i].direction=DOWN;
+					else if(dots[i].y==*maxy-1)
+						dots[i].direction=UP;
+				}		
+				
+				// Make invisible from left to right when sequence is done.
+				if(counter >= 750 && (counter-750)<*maxx)
+					dots[counter-750].visible = FALSE;
+		
+				// Restart.	
+				if((counter - 750) > *maxx)  // If all dots have left the screen.
+					state = 0;
+			}  // cycleskip condition
 			break;
 	}  // switch  
 		
