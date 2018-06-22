@@ -30,14 +30,8 @@ void loop()
 
 	while(ch != 27){
 	        
-		// Set screen mode.
-		initscr();
-
 		// Don't stop by getch().
 		nodelay(stdscr, TRUE);
-
-		// Disable cursor.
-		curs_set(0);
 
 		// Get terminal size and set window size.
 		getmaxyx(stdscr,maxy,maxx);
