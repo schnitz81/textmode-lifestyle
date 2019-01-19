@@ -29,7 +29,10 @@ void loop()
 	Position coordinates[txtLength];
 
 	while(ch != 27){
-	        
+
+		// Clean input buffer after terminal resizing.
+		flushinp();	       
+
 		// Don't stop by getch().
 		nodelay(stdscr, TRUE);
 
