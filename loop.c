@@ -46,7 +46,7 @@ void loop()
 		currentmaxx = maxx;
 
 		// Create dotbar instance.
-		dot dots[maxx-1];
+		dot dots[maxx];
 	
 		// Print banner
 		banner( &maxx, &maxy );	
