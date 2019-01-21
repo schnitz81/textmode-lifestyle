@@ -19,7 +19,7 @@ void loop()
 	delay.tv_sec = 0;  // Seconds delay
 	delay.tv_nsec = CYCLETIME; // nsec delay;
 	
-	int ch;  // ESC input.
+	int ch = 0;  // ESC input.
 	int maxx, maxy, currentmaxy, currentmaxx;  // Terminal size .
 	int i;
 
