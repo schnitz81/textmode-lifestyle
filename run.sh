@@ -38,7 +38,7 @@ if ! [ -e textmode-lifestyle ]; then
 	gcc -Wall -c dotbar.c
 	gcc -Wall -c banner.c
 	gcc -Wall -c tune.c
-	gcc -o textmode-lifestyle main.o loop.o bouncer.o scroller.o dotbar.o banner.o tune.o -lcurses -lmikmod -lpthread
+	gcc -o textmode-lifestyle main.o loop.o bouncer.o scroller.o dotbar.o banner.o tune.o -lncurses -lmikmod -lpthread
 
 	if [ $? -eq 0 ]; then
 		echo "Build successful. Starting executable..."; sleep 1
