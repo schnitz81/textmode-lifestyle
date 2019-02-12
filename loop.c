@@ -12,7 +12,7 @@
 const char txt[] = "So here we are with a great new intro for the masses. Remember: Text mode is not an option, not just a graphics mode. It is a life style. And those of you who think graphical user interfaces are more efficient are stuck in the 90s. This intro uses multithreading and terminal size scalability, adapting banner and scroll text to the current terminal size. Greetings go to all those who love minimalistic computer environments! /Schnitz signing off...  \n";
 
 
-void loop()
+void loop(bool framecounter)
 {
 
 	// Set scroll text speed
@@ -29,6 +29,9 @@ void loop()
 	Position coordinates[txtLength];
 
 	while(ch != 27){
+		
+		// initialize framecounter and reset at window resize. 
+		unsigned int frames = 0;
 
 		// Clean input buffer after terminal resizing.
 		flushinp();	       
@@ -62,8 +65,15 @@ void loop()
 			ch = getch(); // Detect escape button.
 
 			for(i=1;i<=9;i++){
+				
 				nanosleep(&delay,NULL);  // Cycle time delay.
 				
+				// Update framecounter if chosen.
+				if(framecounter){
+					frames++;
+					mvprintw(1,1,"frame:%i",frames);
+				}
+
 				// Dotbar and scroller update.
 				if(i==1){
 					dotbar(&maxx, &maxy, dots);
