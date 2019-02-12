@@ -7,7 +7,7 @@ extern const char txt[];
 struct timespec delay; // Data type for pause timer.
 
 /* Function prototypes */
-void loop();
+void loop(bool framecounter);
 
 
 #endif

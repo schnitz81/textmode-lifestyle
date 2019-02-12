@@ -21,12 +21,13 @@ pthread_t startMultiThread()
 	return tId;
 }
 
-bool askPlayMusic()
+bool askYesNo(char question[])
 {
 	char ch;
 	int maxx,maxy;
 	getmaxyx(stdscr,maxy,maxx);  // Get terminal size.
-	mvprintw(maxy/2,(maxx/2)-6,"Music? (Y/N)");  
+	mvprintw(maxy/2,(maxx/2)-7,"%s (Y/N)",question);  
+	refresh();
 	while(true){
 		ch=getch();
 		if(ch==27){
@@ -55,7 +56,10 @@ int main()
 	noecho();
 	
 	// Get user music choice
-	bool music = askPlayMusic();
+	bool music = askYesNo("Music?");
+
+	// Get framcounter choice
+	bool framecounter = askYesNo("Framecounter?");
 
 	// Disable output buffer.
 	setvbuf(stdout, NULL, _IONBF, 0);
@@ -65,7 +69,7 @@ int main()
 		threadId = startMultiThread();
 
 	// Execute loop
-	loop();
+	loop(framecounter);
 	
 	// Shut down music thread and return.
 	if(music)
