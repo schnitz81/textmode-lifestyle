@@ -14,6 +14,7 @@ const char txt[] = "So here we are with a great new intro for the masses. Rememb
 
 void loop(bool framecounter)
 {
+	struct timespec delay; // Data type for pause timer.
 
 	// Set scroll text speed
 	delay.tv_sec = 0;  // Seconds delay
