@@ -105,9 +105,7 @@ void print_text(const int *maxx, const int *txtLength, const Position *coordinat
 	
 	// Print out text.
 	for(i=0;i<=*txtLength;i++){
-		if( coordinates[i].x >= 0 && coordinates[i].x < *maxx ){  // Only if position is "inscreen".
-			move( coordinates[i].y,coordinates[i].x );  // y-koordinat, x-koordinat
-			printw("%c",txt[i]); 
-		}
+		if( coordinates[i].x >= 0 && coordinates[i].x < *maxx )  // Only if position is "inscreen".
+			mvprintw(coordinates[i].y,coordinates[i].x,"%c",txt[i]); 
 	}
 }
