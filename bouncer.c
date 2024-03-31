@@ -205,7 +205,7 @@ void update_bouncer_pixels(Bouncer *unit)
 
 void erase_old_bouncer(Bouncer *unit)
 {
-	int i;
+	size_t i;
 	chtype tmppixel;
 	for(i=0;i<=28;i++){
 		tmppixel = mvinch(unit->pixels[i].y,unit->pixels[i].x);
@@ -216,7 +216,7 @@ void erase_old_bouncer(Bouncer *unit)
 
 void print_bouncer(Bouncer *unit)
 {
-	int i;
+	size_t i;
 	chtype tmppixel;
 	attron(A_STANDOUT); 
 	for(i=0;i<=28;i++){  // Draw bouncer by inverting.
