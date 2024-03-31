@@ -9,7 +9,7 @@ static int state = 0;
 void dotbar(const int *maxx, const int *maxy, dot *dots)
 {
 	static int counter,bcounter;
-	int i;
+	size_t i;
 	static bool cycleskip;
 
 	// Erase last turn dots
