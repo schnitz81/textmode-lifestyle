@@ -5,7 +5,7 @@
 
 void banner(const int *maxx, const int *maxy)
 {
-	int i;
+	size_t i;
 	int posx, posy;
 	enum threesizes bannerchoice;
 
