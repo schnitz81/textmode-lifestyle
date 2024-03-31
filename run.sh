@@ -1,6 +1,6 @@
 if ! [ -e textmode-lifestyle ]; then
 	echo "No executable found. Preparing to build..."; sleep .6
-	echo -n "Checking gcc..."; sleep .4
+	echo -n "Checking gcc.."; sleep .4
 	if [ -z "$(which gcc)" ]; then
 		echo -e "failed!\n\nMake sure gcc is installed.\n"
 		exit 1
@@ -8,21 +8,21 @@ if ! [ -e textmode-lifestyle ]; then
 	echo "success!"; sleep .4
 
 	echo -n "Checking curses..."; sleep .4
-	if [[ ! -n $(find /usr/* -name 'curses.h') ]]; then
+	if [[ ! -n $(find /usr/* -name 'curses.h' 2>/dev/null) ]]; then
 		echo -e "failed!\n\ncurses.h not found. Make sure curses (most often ncurses) is installed.\n"
 		exit 1
 	fi
 	echo "success!"; sleep .4
 	
 	echo -n "Checking mikmod dev..."; sleep .4
-	if [[ ! -n $(find /usr/* -name 'mikmod.h') ]]; then
+	if [[ ! -n $(find /usr/* -name 'mikmod.h' 2>/dev/null) ]]; then
 		echo -e "failed!\n\nmikmod.h not found. Make sure mikmod dev package is installed.\n"
 		exit 1
 	fi
 	echo "success!"; sleep .4
 	
 	echo -n "Checking mikmod..."; sleep .4
-	if [[ ! -n $(find /usr/lib* -name 'libmikmod.so*') ]]; then
+	if [[ ! -n $(find /usr/lib* -name 'libmikmod.so*' 2>/dev/null) ]]; then
 		echo -e "failed!\n\nMikmod modules not found. Make sure mikmod is installed.\n"
 		exit 1
 	fi

@@ -9,33 +9,33 @@
 #include "dotbar.h"
 
 /* Scroll text */
-const char txt[] = "So here we are with a great new intro for the masses. Remember: Text mode is not an option, not just a graphics mode. It is a life style. And those of you who think graphical user interfaces are more efficient are stuck in the 90s. This intro uses multithreading and terminal size scalability, adapting banner and scroll text to the current terminal size. Greetings go to all those who love minimalistic computer environments! /Schnitz signing off...  \n";
+const char txt[] = "So here we are with a great new intro for the masses. Remember: Text mode is not an option, not just a graphics mode. It is a life style. And those of you who think graphical user interfaces are more efficient are stuck in the 90s. This intro uses multithreading and terminal size scalability, adapting banner and scroll text to the current terminal size. Greetings go to all those who love minimalistic computer environments! /Schnitz signing off...";
 
 
-void loop(bool framecounter)
+void loop(const int * const framecounter)
 {
 	struct timespec delay; // Data type for pause timer.
 
 	// Set scroll text speed
 	delay.tv_sec = 0;  // Seconds delay
 	delay.tv_nsec = CYCLETIME; // nsec delay;
-	
+
 	int ch = 0;  // ESC input.
 	int maxx, maxy, currentmaxy, currentmaxx;  // Terminal size .
 	int i;
 
-	const int txtLength = ( sizeof(txt) / sizeof(txt[0])-1 ); // Get length of scroller text.
+	const int txtLength = ( sizeof(txt) / sizeof(txt[0]) ); // Get length of scroller text.
 
-	// Create text coordinates instance.
-	Position coordinates[txtLength];
+	// Create text coordinates array instance.
+	Position coordinates[txtLength+1];
 
 	while(ch != 27){
-		
-		// initialize framecounter and reset at window resize. 
+
+		// initialize framecounter and reset at window resize.
 		unsigned int frames = 0;
 
 		// Clean input buffer after terminal resizing.
-		flushinp();	       
+		flushinp();
 
 		// Don't stop by getch().
 		nodelay(stdscr, TRUE);
@@ -51,28 +51,28 @@ void loop(bool framecounter)
 
 		// Create dotbar instance.
 		dot dots[maxx];
-	
+
 		// Print banner
-		banner( &maxx, &maxy );	
-	
+		banner(&maxx, &maxy);
+
 		// Initialize bouncer object.
 		Bouncer *bounceunit = create_bouncer(7,4);
-	
+
 		// Set starting values to all letter coordinates.
-		initialize( &maxx, &maxy, &txtLength, coordinates );
+		initialize(&maxx, &maxy, &txtLength, coordinates);
 
 		// Character update loop.
-		while(currentmaxy == maxy && currentmaxx == maxx && ch != 27){ 
+		while(currentmaxy == maxy && currentmaxx == maxx && ch != 27){
 			ch = getch(); // Detect escape button.
 
 			for(i=1;i<=9;i++){
-				
-				nanosleep(&delay,NULL);  // Cycle time delay.
-				
+
+				nanosleep(&delay, NULL);  // Cycle time delay.
+
 				// Update framecounter if chosen.
-				if(framecounter){
+				if(*framecounter){
 					frames++;
-					mvprintw(1,1,"frame:%i",frames);
+					mvprintw(1,1,"frame:%u",frames);
 				}
 
 				// Dotbar and scroller update.
@@ -83,7 +83,7 @@ void loop(bool framecounter)
 				}
 
 				// Only dotbar update.
-				else if(i==4||i==7){
+				else if(i==4 || i==7){
 					dotbar(&maxx, &maxy, dots);
 					print_text(&maxx, &txtLength, coordinates);
 				}
@@ -95,7 +95,7 @@ void loop(bool framecounter)
 				fflush(stdout);
 			}
 			// Check for new window size.
-			getmaxyx(stdscr,currentmaxy,currentmaxx);
+			getmaxyx(stdscr, currentmaxy, currentmaxx);
 		}  // while
 
 		/* In case of window resize or ESC pressed. */
@@ -104,7 +104,7 @@ void loop(bool framecounter)
 		destroy_bouncer(bounceunit);
 		restart_dotbar();
 
-		// Erase and close current window. 
+		// Erase and close current window.
 		werase(stdscr);
 		endwin();
 	} // while
