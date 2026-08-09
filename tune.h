@@ -11,7 +11,7 @@
 
 
 /* Function prototypes */
-void *play_music();
+void *play_music(void *);
 
 
 #endif

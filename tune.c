@@ -3,7 +3,7 @@
 #include <curses.h>
 #include "tune.h"
 
-void *play_music()
+void *play_music(void *)
 {
 MODULE *module;
 
