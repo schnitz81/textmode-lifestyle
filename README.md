@@ -1,6 +1,7 @@
 # textmode-lifestyle
 Scaleable text-mode intro demo for the Linux terminal.
 
+![screenshot](screenshot.png)
 
 ## License
 This file is part of textmode-lifestyle.
