@@ -33,7 +33,7 @@ if (module) {
 	}
 	Player_Stop();
 	Player_Free(module);
-} 
+}
 /* give up */
 else{
 	endwin();
