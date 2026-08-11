@@ -12,12 +12,12 @@ void banner(const int *maxx, const int *maxy)
 	// Draw middle separator
 	for(i=0;i<*maxx;i++)
 		mvprintw(*maxy/2,i,"%c",35);
-	
+
 	// Upper frame left edge.
-	mvprintw(0,1,"/"); 
-		
+	mvprintw(0,1,"/");
+
 	// upper frame
-	for(i=2;i<*maxx-2;i++) 
+	for(i=2;i<*maxx-2;i++)
 		mvprintw(0,i,"|");
 
 	// Upper frame right edge.
@@ -28,7 +28,7 @@ void banner(const int *maxx, const int *maxy)
 		mvprintw(i,0,"/");
 
 	// right frame
-	for(i=1;i<*maxy/2;i++) 
+	for(i=1;i<*maxy/2;i++)
 		mvprintw(i,*maxx-1,"\\");
 
 	// Choose banner by terminal size.
