@@ -4,7 +4,7 @@
 
 /* Set tune path to shared folder if compiled as a package with PACKAGE macro.  */
 #ifdef PACKAGE
-#define TUNEFILE "/usr/share/textmode-lifestyle/tune.dat"	
+#define TUNEFILE "/usr/share/textmode-lifestyle/tune.dat"
 #else
 #define TUNEFILE "tune.dat"
 #endif

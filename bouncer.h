@@ -7,8 +7,8 @@ typedef enum leftOrRight { LEFT, RIGHT } leftOrRight;
 
 typedef struct pixel{
 	int x;
-	int y;	
-} Pixel; 
+	int y;
+} Pixel;
 
 typedef struct bouncer {
 	int x;

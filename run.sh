@@ -13,21 +13,21 @@ if ! [ -e textmode-lifestyle ]; then
 		exit 1
 	fi
 	echo "success!"; sleep .4
-	
+
 	echo -n "Checking mikmod dev..."; sleep .4
 	if [[ ! -n $(find /usr/* -name 'mikmod.h' 2>/dev/null) ]]; then
 		echo -e "failed!\n\nmikmod.h not found. Make sure mikmod dev package is installed.\n"
 		exit 1
 	fi
 	echo "success!"; sleep .4
-	
+
 	echo -n "Checking mikmod..."; sleep .4
 	if [[ ! -n $(find /usr/lib* -name 'libmikmod.so*' 2>/dev/null) ]]; then
 		echo -e "failed!\n\nMikmod modules not found. Make sure mikmod is installed.\n"
 		exit 1
 	fi
 	echo "success!"; sleep .4
-	
+
     echo "Proceeding to build executable..."; sleep .6
 
 	echo 'Building...'
@@ -46,7 +46,7 @@ if ! [ -e textmode-lifestyle ]; then
 	else
 		echo "Build failed. Unable to start."
 	fi
-	
+
 else
 	echo -e "\nExecutable found. Starting..."; sleep 1
 	./textmode-lifestyle
