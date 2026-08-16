@@ -200,16 +200,16 @@ void dotbar(const int *maxx, const int *maxy, dot *dots)
 						dots[i].direction=UP;
 				}
 
-				// Make invisible from left to right when sequence is done.
-				if(counter >= 1500 && (counter-1500)<*maxx)
-					dots[counter-1500].visible = FALSE;
-
 				// Restart.
 				if((counter - 1500) > *maxx)  // If all dots have left the screen.
 					state = 0;
 			}  // cycleskip condition
 			break;
 	}  // switch
+
+	// Make invisible from left to right when sequence is done.
+	if(counter >= 1500 && (counter-1500)<*maxx)
+		dots[counter-1500].visible = FALSE;
 
 	// Print new dots.
 	if(state>1){
