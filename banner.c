@@ -149,6 +149,150 @@ void banner(const int *maxx, const int *maxy)
 			printw("    \\  \\:\\\\__\\/         \\__\\/     \\  \\:\\       \\  \\::/ \\__\\/     \\__\\/         \\  \\:\\   \\  \\:\\ ");
 			move(posy+21,posx);
 			printw("     \\__\\/                         \\__\\/        \\__\\/                           \\__\\/    \\__\\/ ");
+
+			/* ultra wide */
+
+			// VT220 banner
+			if(*maxx>265 && *maxy>66){
+				posx = *maxx - 77;
+				posy = *maxy/4 - 15;
+
+				move(posy,posx);
+				printw("                                     ...");
+				move(posy+1,posx);
+				printw("                        ..';ccloxO0K0Okxdc;.");
+				move(posy+2,posx);
+				printw("           ..,;cldkOOxx0Okxdolcc:::::::::::;");
+				move(posy+3,posx);
+				printw("       ;ONWWXkdolc:;;;;;;;;;;;;;,,,,'...''::");
+				move(posy+4,posx);
+				printw("      '0O0OOl;;;;;;,,,,''........       .';c.");
+				move(posy+5,posx);
+				printw("   ;OXKKkOOOd;;;....      . .......      ',c'");
+				move(posy+6,posx);
+				printw("   lXXKKO00Ok;;;   .  ........'''....    ',c:");
+				move(posy+7,posx);
+				printw("   ,XXKKO0000c:;. .....,,.......,',..... .,:l");
+				move(posy+8,posx);
+				printw("    KXXKKO000d::, .,;..::.'...,'''........,;l.");
+				move(posy+9,posx);
+				printw("    kXXXK0000k::;. ...................... ,,c,");
+				move(posy+10,posx);
+				printw("    cKXXXK0K00c::.     .................. ,,c:");
+				move(posy+11,posx);
+				printw("    .KKXXX0KK0x::;      ...............   ',:c");
+				move(posy+12,posx);
+				printw("     .0XXX0KK0O:::.     .........    ....,::cc.");
+				move(posy+13,posx);
+				printw("       xXXX0000oc:'           ...',::cccccccll'");
+				move(posy+14,posx);
+				printw("        cXXO000kcc;   ...',;::ccccccccccc:;,'.      .':coodxd;");
+				move(posy+15,posx);
+				printw("         .0K0000occc::cc:::;:;.;;;;,'''       ...,;::;:::cclxkkl.");
+				move(posy+16,posx);
+				printw("           x00KKkcccc::::;;;;'''        ..',;;;''',lcccdoooodoxkkc.");
+				move(posy+17,posx);
+				printw("            ;OKKKoc:::'''           ..',;;,,',:c;;;;,,,:oooododxdxxOOk:.");
+				move(posy+18,posx);
+				printw("                             ..,;:::c:;,,;;clolooc;,,,,:dxxddxxkxdolokxc");
+				move(posy+19,posx);
+				printw("                       .':cloolc::;;:odddollllldxddddl:;;;:dOxxlllll:'.");
+				move(posy+20,posx);
+				printw("                 .':loxxxxdocc:coxxxddodododooodxdoxkxooxkOOkxoc,.");
+				move(posy+21,posx);
+				printw("            .;lokkxxdxlllO0kOOkxdxdxdxdddxdxddooooxkO0Okxol;..");
+				move(posy+22,posx);
+				printw("        ;xKX0dxdooclodOOOkxkdkdkdkdxdkxkdxkkkkxdkOOkdl;'.");
+				move(posy+23,posx);
+				printw("        OXXXXKodx00kOxkkkkxkxkxOxOxkxkkOOOxolllll:'.");
+				move(posy+24,posx);
+				printw("        xKKXXXXXX0kOOkkdOkOOkOxOkOO0Oxdlcclc:,..");
+				move(posy+25,posx);
+				printw("         'xKXXXXK00Ox00OOOkOx000kdlccccc;..");
+				move(posy+26,posx);
+				printw("           ,OKXKKK0k0kdlOOkdclccccc;'.");
+				move(posy+27,posx);
+				printw("             ,kKKKKX0OKKOccccc;'.");
+				move(posy+28,posx);
+				printw("               ,kKKNX0kdo:,..");
+				move(posy+29,posx);
+				printw("                 ,Odc;..");
+				move(posy+30,posx);
+				printw("                   '");
+
+			}
+
+			// CLI banner
+			if(*maxx>284 && *maxy>68){
+
+				posx = *maxx/4 - 66;
+				posy = *maxy/4 - 16;
+
+				move(posy,posx);
+				printw("          _____");
+				move(posy+1,posx);
+				printw("         /\\    \\");
+				move(posy+2,posx);
+				printw("        /::\\    \\");
+				move(posy+3,posx);
+				printw("       /::::\\    \\");
+				move(posy+4,posx);
+				printw("      /::::::\\    \\");
+				move(posy+5,posx);
+				printw("     /:::/\\:::\\    \\                    _____");
+				move(posy+6,posx);
+				printw("    /:::/  \\:::\\    \\                  /\\    \\");
+				move(posy+7,posx);
+				printw("   /:::/    \\:::\\    \\                /::\\____\\");
+				move(posy+8,posx);
+				printw("  /:::/    / \\:::\\    \\              /:::/    /");
+				move(posy+9,posx);
+				printw(" /:::/    /   \\:::\\    \\            /:::/    /");
+				move(posy+10,posx);
+				printw("/:::/____/     \\:::\\____\\          /:::/    /");
+				move(posy+11,posx);
+				printw("\\:::\\    \\      \\::/    /         /:::/    /                    _____");
+				move(posy+12,posx);
+				printw(" \\:::\\    \\      \\/____/         /:::/    /                    /\\    \\");
+				move(posy+13,posx);
+				printw("  \\:::\\    \\                    /:::/    /                    /::\\    \\");
+				move(posy+14,posx);
+				printw("   \\:::\\    \\                  /:::/    /                     \\:::\\    \\");
+				move(posy+15,posx);
+				printw("    \\:::\\    \\                /:::/____/                       \\:::\\    \\");
+				move(posy+16,posx);
+				printw("     \\:::\\    \\               \\:::\\    \\                        \\:::\\    \\");
+				move(posy+17,posx);
+				printw("      \\:::\\    \\               \\:::\\    \\                        \\:::\\    \\");
+				move(posy+18,posx);
+				printw("       \\:::\\____\\               \\:::\\    \\                       /::::\\    \\");
+				move(posy+19,posx);
+				printw("        \\::/    /                \\:::\\    \\             ____    /::::::\\    \\");
+				move(posy+20,posx);
+				printw("         \\/____/                  \\:::\\    \\           /\\   \\  /:::/\\:::\\    \\");
+				move(posy+21,posx);
+				printw("                                   \\:::\\    \\         /::\\   \\/:::/  \\:::\\____\\");
+				move(posy+22,posx);
+				printw("                                    \\:::\\    \\        \\:::\\  /:::/    \\::/    /");
+				move(posy+23,posx);
+				printw("                                     \\:::\\____\\        \\:::\\/:::/    / \\/____/");
+				move(posy+24,posx);
+				printw("                                      \\::/    /         \\::::::/    /");
+				move(posy+25,posx);
+				printw("                                       \\/____/           \\::::/____/");
+				move(posy+26,posx);
+				printw("                                                          \\:::\\    \\");
+				move(posy+27,posx);
+				printw("                                                           \\:::\\    \\");
+				move(posy+28,posx);
+				printw("                                                            \\:::\\    \\");
+				move(posy+29,posx);
+				printw("                                                             \\:::\\____\\");
+				move(posy+30,posx);
+				printw("                                                              \\::/    /");
+				move(posy+31,posx);
+				printw("                                                               \\/____/");
+			}
 			break;
 		default:  // Should never happen.
 			break;
