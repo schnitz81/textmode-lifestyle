@@ -35,10 +35,11 @@ if ! [ -e textmode-lifestyle ]; then
 	gcc -Wall -c loop.c &&
 	gcc -Wall -c bouncer.c &&
 	gcc -Wall -c scroller.c &&
+	gcc -Wall -c starfield.c &&
 	gcc -Wall -c dotbar.c &&
 	gcc -Wall -c banner.c &&
 	gcc -Wall -c tune.c &&
-	gcc -o textmode-lifestyle main.o loop.o bouncer.o scroller.o dotbar.o banner.o tune.o -lncurses -ltinfo -lmikmod -lpthread &&
+	gcc -o textmode-lifestyle main.o loop.o bouncer.o scroller.o starfield.o dotbar.o banner.o tune.o -lncurses -ltinfo -lmikmod -lpthread &&
 
 	if [ $? -eq 0 ]; then
 		echo "Build successful. Starting executable..."; sleep 1

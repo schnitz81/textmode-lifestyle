@@ -209,7 +209,7 @@ void erase_old_bouncer(Bouncer *unit)
 	chtype tmppixel;
 	for(i=0;i<=28;i++){
 		tmppixel = mvinch(unit->pixels[i].y,unit->pixels[i].x);
-		tmppixel -= (tmppixel & A_STANDOUT);
+		tmppixel -= (tmppixel & A_REVERSE);
 		mvaddch(unit->pixels[i].y,unit->pixels[i].x,tmppixel);
 	}
 }
@@ -218,12 +218,12 @@ void print_bouncer(Bouncer *unit)
 {
 	size_t i;
 	chtype tmppixel;
-	attron(A_STANDOUT);
+	attron(A_REVERSE);
 	for(i=0;i<=28;i++){  // Draw bouncer by inverting.
 		tmppixel = mvinch(unit->pixels[i].y,unit->pixels[i].x);
 		mvaddch(unit->pixels[i].y,unit->pixels[i].x,tmppixel);
 	}
-	attroff(A_STANDOUT);
+	attroff(A_REVERSE);
 }
 
 void update_bouncer(const int *maxx, const int *maxy, Bouncer *unit, const int *i)
