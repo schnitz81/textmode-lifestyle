@@ -6,6 +6,7 @@
 #include "bouncer.h"
 #include "loop.h"
 #include "scroller.h"
+#include "starfield.h"
 #include "dotbar.h"
 
 /* Scroll text */
@@ -49,11 +50,29 @@ void loop(const int * const framecounter)
 		currentmaxy = maxy;
 		currentmaxx = maxx;
 
+		// Starfield variables
+		int nbrOfFrontStars;
+		int nbrOfMiddleStars;
+		int nbrOfBackStars;
+
+		// set number of stars according to the window size
+		nbrOfFrontStars = maxy/2/2;
+		nbrOfMiddleStars = maxy/2;
+		nbrOfBackStars = maxy*2;
+
+		// Initialize 3 layers of starfields.
+		Star frontstars[nbrOfFrontStars];
+		Star middlestars[nbrOfMiddleStars];
+		Star backstars[nbrOfBackStars];
+
 		// Create dotbar instance.
 		dot dots[maxx];
 
-		// Print banner
+		// Print banner.
 		banner(&maxx, &maxy);
+
+		// Initialize stars.
+		initializeStars(&maxx, &maxy, frontstars, middlestars, backstars, &nbrOfFrontStars, &nbrOfMiddleStars, &nbrOfBackStars);
 
 		// Initialize bouncer object.
 		Bouncer *bounceunit = create_bouncer(7,4);
@@ -88,8 +107,14 @@ void loop(const int * const framecounter)
 					print_text(&maxx, &txtLength, coordinates);
 				}
 
-				// Move bouncer
+				// Move bouncer.
 				update_bouncer(&maxx, &maxy, bounceunit, &i);
+
+				// Update starfield.
+				startravel(&maxx, &maxy, frontstars, middlestars, backstars, &nbrOfFrontStars, &nbrOfMiddleStars, &nbrOfBackStars);
+
+				// Print bouncer again after stars are updated.
+				print_bouncer(bounceunit);
 
 				refresh();
 				fflush(stdout);
