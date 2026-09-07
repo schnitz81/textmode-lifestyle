@@ -219,13 +219,13 @@ void startravel(const int *maxx, const int *maxy, Star *frontstars, Star *middle
 
 	// Direction handling.
 	directioncycle++;
-	if(directioncycle==200 || directioncycle==400 || directioncycle==600 || directioncycle==800 || directioncycle==1000 || directioncycle==1200
-			|| directioncycle==1400 || directioncycle>=1600){
+	if(directioncycle==350 || directioncycle==700 || directioncycle==1050 || directioncycle==1400 || directioncycle==1750 || directioncycle==2100
+			|| directioncycle==2450 || directioncycle>=2800){
 		// Restart main star direction cycle.
-		if(directioncycle>1900)
+		if(directioncycle>3100)
 			directioncycle = 0;
 		// Short cycle mode.
-		else if(directioncycle>=1600){
+		else if(directioncycle>=2800){
 			// Star direction change in short cycle mode.
 			if(directionshortcycle>12){
 				stardirection++;
